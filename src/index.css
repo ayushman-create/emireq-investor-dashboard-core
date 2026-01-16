@@ -1,0 +1,130 @@
+/* ============================= */
+/* Font Face */
+/* ============================= */
+
+@font-face {
+  font-family: 'URWGeometric';
+  src: url('/fonts/URWGeometricRegular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================= */
+/* Global Reset */
+/* ============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Base Styles */
+/* ============================= */
+
+html,
+body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 🔴 REMOVE Inter completely */
+/* 🔴 FORCE URWGeometric everywhere */
+
+html,
+body,
+* {
+  font-family: 'URWGeometric', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Helvetica Neue', Arial, sans-serif !important;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ============================= */
+/* Typography */
+/* ============================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ============================= */
+/* Scrollbar Styling */
+/* ============================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============================= */
+/* Utility Classes */
+/* ============================= */
+
+.em-icon-button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.em-icon-button:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.em-icon-button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.em-info-icon {
+  display: inline-block;
+  margin-left: 6px;
+  color: #9ca3af;
+  vertical-align: middle;
+  cursor: help;
+}
+
+.em-info-icon svg {
+  transform: translateY(-2px);
+}

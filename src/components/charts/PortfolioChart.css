@@ -1,0 +1,469 @@
+/* ============================= */
+/* Portfolio Chart */
+/* ============================= */
+
+.em-portfolio-chart {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.em-portfolio-chart:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* =============================
+   HEADER WRAPPER
+============================= */
+.em-portfolio-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* =============================
+   LEFT TEXT BLOCK
+============================= */
+.em-portfolio-chart-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-portfolio-chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* Info icon */
+/* Info icon */
+.em-info-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer !important; /* 🔥 FORCE OVERRIDE */
+}
+
+
+.em-info-icon svg {
+  display: block;
+    cursor: inherit;
+  /* 👇 move SVG up & right */
+  transform: translate(-1px, 3px);
+}
+
+.em-info-icon:hover {
+  background: #6B7280;
+  transform: scale(1.1);
+}
+
+.em-info-icon:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.em-info-icon svg {
+  width: 10px;
+  height: 10px;
+  color: #FFFFFF;
+}
+
+/* SUBTITLE */
+.em-portfolio-chart-subtitle {
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* =============================
+   ACTION ICON GROUP
+   (MATCH QUICK ACTIONS EXACTLY)
+============================= */
+
+.em-portfolio-chart-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+/* ICON BUTTON — identical behavior */
+.em-icon-button {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #888888;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.em-icon-button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Active */
+.em-icon-button:active {
+  transform: scale(0.97);
+}
+
+/* Focus */
+.em-icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+
+/* Disabled */
+.em-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-icon-button:disabled:hover {
+  background: transparent;
+  transform: none;
+  color: #6b7280;
+}
+
+
+/* =============================
+   CONTENT WRAPPER
+============================= */
+.em-portfolio-chart-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =============================
+   TOP ROW (VALUE + RANGE)
+============================= */
+.em-portfolio-chart-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* =============================
+   VALUE BLOCK
+============================= */
+.em-portfolio-chart-value-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-portfolio-chart-value {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.em-portfolio-chart-amount {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.em-portfolio-chart-change {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #D1FAE5;
+  color: #10B981;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+}
+
+.em-portfolio-chart-change svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* LABEL */
+.em-portfolio-chart-label {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =============================
+   RANGE SELECTOR CONTAINER
+============================= */
+.em-portfolio-chart-ranges {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: #F3F4F6;
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+/* RANGE BUTTON */
+.em-portfolio-chart-range {
+  all: unset;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B7280;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+}
+
+.em-portfolio-chart-range:hover {
+  background: #E5E7EB;
+  color: #111827;
+}
+
+.em-portfolio-chart-range:active {
+  transform: scale(0.98);
+}
+
+/* ACTIVE — FIGMA EXACT */
+.em-portfolio-chart-range.active {
+  background: #FFFFFF;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.em-portfolio-chart-range:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.em-portfolio-chart-range:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-portfolio-chart-range:disabled:hover {
+  background: transparent;
+  color: #6B7280;
+}
+
+/* =============================
+   CHART GRAPH
+============================= */
+.em-portfolio-chart-graph {
+  width: 100%;
+  margin-top: 8px;
+  height: 240px;
+  position: relative;
+  overflow: visible;
+}
+
+.em-chart-svg {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  overflow: visible;
+}
+
+/* Chart elements */
+.em-chart-gridline {
+  pointer-events: none;
+}
+
+.em-chart-area {
+  pointer-events: none;
+}
+
+.em-chart-line {
+  pointer-events: none;
+  cursor: crosshair;
+}
+
+/* Invisible hover overlay - captures all mouse events */
+.em-chart-hover-overlay {
+  pointer-events: all;
+  cursor: crosshair;
+}
+
+.em-chart-label {
+  font-size: 13px;
+  fill: #9CA3AF;
+  font-weight: 500;
+  pointer-events: none;
+  user-select: none;
+}
+
+.em-chart-y-label {
+  text-anchor: start;
+}
+
+.em-chart-x-label {
+  text-anchor: middle;
+}
+
+/* Hover line */
+.em-chart-hover-line {
+  pointer-events: none;
+  opacity: 0.6;
+  animation: fadeInLine 0.15s ease;
+}
+
+/* Tooltip */
+.em-chart-tooltip {
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  animation: fadeInTooltip 0.2s ease;
+}
+
+.em-chart-tooltip-date {
+  pointer-events: none;
+  user-select: none;
+}
+
+.em-chart-tooltip-value {
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes fadeInLine {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeInTooltip {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode */
+.em-app--dark .em-portfolio-chart {
+  background-color: #1F2937;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.em-app--dark .em-portfolio-chart-title {
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-portfolio-chart-subtitle {
+  color: #9CA3AF;
+}
+
+.em-app--dark .em-portfolio-chart-amount {
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-portfolio-chart-label {
+  color: #6B7280;
+}
+
+.em-app--dark .em-portfolio-chart-ranges {
+  background: #374151;
+}
+
+.em-app--dark .em-portfolio-chart-range {
+  color: #9CA3AF;
+}
+
+.em-app--dark .em-portfolio-chart-range:hover {
+  background: #4B5563;
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-portfolio-chart-range.active {
+  background: #9333EA;
+  color: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.em-app--dark .em-portfolio-chart-actions {
+  background: #374151;
+  border-color: #4B5563;
+}
+
+.em-app--dark .em-icon-button {
+  color: #9CA3AF;
+}
+
+.em-app--dark .em-icon-button:hover {
+  background: #4B5563;
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-chart-label {
+  fill: #6B7280;
+}
+
+.em-app--dark .em-chart-gridline {
+  stroke: #374151;
+}
+
+.em-app--dark .em-chart-tooltip {
+  fill: #1F2937;
+}
+
+.em-app--dark .em-chart-hover-line {
+  stroke: #FFFFFF;
+  opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .em-portfolio-chart-top {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .em-portfolio-chart-ranges {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .em-portfolio-chart-amount {
+    font-size: 28px;
+  }
+  
+  .em-portfolio-chart-graph {
+    height: 200px;
+  }
+}

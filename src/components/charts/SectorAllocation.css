@@ -1,0 +1,259 @@
+/* ================= ROOT ================= */
+.sa-card {
+  background: var(--sa-bg);
+  border-radius: 24px;
+  padding: 28px;
+  width: 100%;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--sa-text);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease, width 0.28s ease;
+  box-sizing: border-box;
+}
+
+.sa-card:hover {
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= THEME ================= */
+:root {
+  --sa-bg: #ffffff;
+  --sa-text: #0f172a;
+  --sa-muted: #64748b;
+  --sa-border: #e5e7eb;
+}
+
+.em-app--dark {
+  --sa-bg: #1F2937;
+  --sa-text: #F9FAFB;
+  --sa-muted: #9CA3AF;
+  --sa-border: #374151;
+}
+
+/* ================= HEADER ================= */
+.sa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px; /* exact spacing from Figma */
+}
+
+/* LEFT */
+.sa-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sa-title {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sa-text);
+  letter-spacing: -0.01em;
+}
+
+.em-app--dark .sa-title {
+  color: #F9FAFB;
+}
+
+/* INFO ICON */
+.sa-info {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sa-info:hover {
+  background: #a8a7a7;
+}
+
+.sa-info:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+/* ================= RIGHT ACTIONS (MATCH QUICK ACTIONS) ================= */
+
+.sa-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+.em-app--dark .sa-actions {
+  background: #374151;
+  border-color: #4B5563;
+}
+
+/* ICON BUTTON — identical to quick actions */
+.sa-action-btn {
+  all: unset;               /* IMPORTANT */
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Hover */
+.sa-action-btn:hover {
+  background: #f3f4f6;
+}
+
+.em-app--dark .sa-action-btn:hover {
+  background: #4B5563;
+}
+
+/* Active (optional but recommended for parity) */
+.sa-action-btn:active {
+  transform: scale(0.97);
+}
+
+/* Focus */
+.sa-action-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+
+
+/* ================= SUBTITLE ================= */
+.sa-subtitle {
+  margin-top: 2px;
+  margin-bottom: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--sa-muted);
+}
+
+.em-app--dark .sa-subtitle {
+  color: #9CA3AF;
+}
+
+
+/* ================= DONUT ================= */
+/* ================= DONUT ================= */
+.sa-chart-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 20px;
+}
+
+.sa-donut {
+  width: 240px;
+  height: 240px;
+}
+
+/* The white rings on the edges */
+.sa-donut-border {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.3); /* Adjust opacity to match Figma */
+  stroke-width: 1.5;
+}
+
+/* Segments */
+.sa-donut-segment {
+  fill: none;
+  stroke-width: 40; /* Increased to match UI */
+  stroke-linecap: butt; 
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.sa-donut-segment.is-hovered {
+  filter: brightness(1.1);
+  opacity: 1;
+  /* Optional: slight scale effect for interaction */
+  transform: scale(1.02); 
+}
+
+
+
+
+
+/* ================= LEGEND ================= */
+.sa-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 500px; /* Adjust based on your layout */
+}
+
+.sa-legend-row {
+  display: grid;
+  /* Columns: Indicator | Label (flexible) | Value (fixed width) | Bar (fixed width) */
+  grid-template-columns: 20px 1fr 60px 140px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover state mimics Figma interaction */
+.sa-legend-row:hover,
+.sa-legend-row.is-active {
+  background-color: rgba(255, 255, 255, 0.05); /* Soft highlight */
+}
+
+/* The color squircle from the UI */
+.sa-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px; /* Matches the rounded square in image_960164.png */
+}
+
+/* Typography matching Figma */
+.sa-label {
+  color: #6b7280; /* Muted gray-blue text */
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.sa-value {
+  color: #111827; /* Darker/Higher contrast for numbers */
+  font-size: 18px;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ================= PROGRESS BAR ================= */
+.sa-bar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sa-bar-bg {
+  height: 8px;
+  width: 100%;
+  background-color: #f3f4f6; /* Very light gray track */
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sa-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  /* Smooth transition for "browser activity" feel */
+  transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}

@@ -1,0 +1,352 @@
+/* ============================= */
+/* Sector Performance Chart */
+/* ============================= */
+
+.em-sector-performance-chart {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  width: 100%;
+  min-width: 450px;
+  max-width: none;
+  contain: layout;
+  cursor: default;
+}
+
+.em-app--dark .em-sector-performance-chart {
+  background: #1F2937;
+}
+
+.em-sector-performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.em-sector-performance-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-sector-performance-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.em-sector-performance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.em-sector-performance-title-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-sector-performance-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-sector-performance-title {
+  color: #F9FAFB;
+}
+
+/* Info icon */
+.em-info-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+}
+
+.em-info-icon svg {
+  display: block;
+  cursor: inherit;
+  transform: translate(-1px, 3px);
+}
+
+.em-info-icon:hover {
+  background: #6B7280;
+  transform: scale(1.1);
+}
+
+.em-info-icon:focus-visible {
+  outline: 2px solid #FFC300;
+  outline-offset: 2px;
+}
+
+.em-info-icon svg {
+  width: 10px;
+  height: 10px;
+  color: #FFFFFF;
+}
+
+.em-sector-performance-subtitle {
+  font-size: 12px;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-sector-performance-subtitle {
+  color: #9CA3AF;
+}
+
+.em-sector-performance-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+.em-app--dark .em-sector-performance-actions {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+/* Icon Button - matching Portfolio chart */
+.em-icon-button {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+}
+
+.em-icon-button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.em-icon-button:active {
+  transform: scale(0.97);
+}
+
+.em-icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+
+.em-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-icon-button:disabled:hover {
+  background: transparent;
+  transform: none;
+  color: #6b7280;
+}
+
+.em-app--dark .em-sector-performance-actions {
+  background: #374151;
+  border-color: #4B5563;
+}
+
+.em-app--dark .em-icon-button {
+  color: #9CA3AF;
+}
+
+.em-app--dark .em-icon-button:hover {
+  background: #4B5563;
+  color: #F9FAFB;
+}
+
+/* ================= DONUT WRAP ================= */
+.em-sector-performance-chart-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 20px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ================= SVG ================= */
+.em-sector-performance-donut {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+  flex-shrink: 0;
+}
+
+/* ================= BORDER RINGS ================= */
+.em-sector-performance-donut-border {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1.5;
+}
+
+/* ================= SEGMENTS ================= */
+.em-sector-performance-donut-segment {
+  fill: none;
+  stroke-width: 40;
+  stroke-linecap: butt;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Hover effect (same as Sector Allocation) */
+.em-sector-performance-donut-segment.is-hovered {
+  filter: brightness(1.1);
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Responsive legend */
+.em-sector-performance-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.em-sector-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.em-sector-legend-item:hover {
+  transform: translateX(2px);
+}
+
+.em-sector-legend-item:active {
+  transform: translateX(0);
+}
+
+.em-sector-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  cursor: inherit;
+}
+
+.em-sector-legend-name {
+  flex: 1;
+  color: #6B7280;
+  font-weight: 500;
+  min-width: 80px;
+  cursor: inherit;
+}
+
+.em-app--dark .em-sector-legend-name {
+  color: #F9FAFB;
+}
+
+.em-sector-legend-roi {
+  color: #111827;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: right;
+  cursor: inherit;
+}
+
+.em-sector-legend-value {
+  color: #6B7280;
+  font-weight: 500;
+  min-width: 60px;
+  text-align: right;
+  cursor: inherit;
+}
+
+.em-app--dark .em-sector-legend-value {
+  color: #9CA3AF;
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (max-width: 768px) {
+  .em-sector-performance-chart {
+    padding: 16px;
+    min-width: 320px;
+  }
+  
+  .em-sector-performance-header {
+    margin-bottom: 16px;
+  }
+  
+  .em-sector-performance-chart-wrap {
+    margin: 16px 0;
+  }
+  
+  .em-sector-performance-donut {
+    max-width: 320px;
+    max-height: 320px;
+  }
+  
+  .em-sector-performance-legend {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .em-sector-legend-item {
+    font-size: 12px;
+  }
+  
+  .em-sector-performance-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .em-sector-performance-chart {
+    padding: 12px;
+    min-width: 280px;
+  }
+  
+  .em-sector-performance-title {
+    font-size: 14px;
+  }
+  
+  .em-sector-performance-subtitle {
+    font-size: 11px;
+  }
+  
+  .em-sector-performance-donut {
+    max-width: 280px;
+    max-height: 280px;
+  }
+  
+  .em-sector-legend-item {
+    font-size: 11px;
+    gap: 8px;
+  }
+}
+

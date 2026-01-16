@@ -1,0 +1,350 @@
+/* ============================= */
+/* ERC-20 Holdings List */
+/* ============================= */
+
+.em-erc20-holdings {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-top: 24px;
+}
+
+.em-app--dark .em-erc20-holdings {
+  background: #1F2937;
+}
+
+.em-erc20-holdings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.em-erc20-holdings-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-erc20-holdings-title {
+  color: #F9FAFB;
+}
+
+.em-erc20-holdings-subtitle {
+  font-size: 13px;
+  color: #6B7280;
+  line-height: 1.4;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-erc20-holdings-subtitle {
+  color: #9CA3AF;
+}
+
+.em-erc20-holdings-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.em-erc20-holdings-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  cursor: text;
+  transition: all 0.2s ease;
+}
+
+.em-erc20-holdings-search:hover {
+  border-color: #D1D5DB;
+}
+
+.em-app--dark .em-erc20-holdings-search {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+.em-erc20-holdings-search svg {
+  flex-shrink: 0;
+  stroke: #6B7280;
+}
+
+.em-erc20-holdings-search-input {
+  all: unset;
+  flex: 1;
+  font-size: 14px;
+  color: #111827;
+}
+
+.em-app--dark .em-erc20-holdings-search-input {
+  color: #F9FAFB;
+}
+
+.em-erc20-holdings-search-input::placeholder {
+  color: #9CA3AF;
+}
+
+.em-erc20-holdings-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  /* Figma padding */
+  padding: 12px 18px;
+
+  /* Pill shape */
+  border-radius: 14px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+
+  /* Figma colors */
+  background: #ffffff;
+  color: #2563eb; /* 🔥 primary blue */
+
+  border: 1px solid #e5e7eb;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Hover (Figma subtle) */
+.em-erc20-holdings-view-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* Active press */
+.em-erc20-holdings-view-btn:active {
+  transform: translateY(1px);
+}
+
+/* Dark mode */
+.em-app--dark .em-erc20-holdings-view-btn {
+  background: #000000;
+  color: #3b82f6;
+  border-color: #1f2937;
+}
+
+.em-app--dark .em-erc20-holdings-view-btn:hover {
+  background: #020617;
+}
+
+/* Icon */
+.em-erc20-holdings-view-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+
+  /* 🔥 Optical correction */
+  transform: translateY(-0.5px);
+
+  /* Ensure icon matches text */
+  stroke: currentColor;
+}
+
+
+.em-erc20-holdings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.em-erc20-holding-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.em-erc20-holding-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.em-erc20-holding-card:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.em-app--dark .em-erc20-holding-card {
+  background: #111827;
+  border-color: #374151;
+}
+
+.em-app--dark .em-erc20-holding-card:hover {
+  border-color: #4B5563;
+}
+
+.em-erc20-holding-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.em-erc20-holding-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #3B82F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.em-erc20-holding-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-erc20-holding-symbol {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  user-select: text;
+}
+
+.em-app--dark .em-erc20-holding-symbol {
+  color: #F9FAFB;
+}
+
+.em-erc20-holding-label {
+  font-size: 13px;
+  color: #6B7280;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-erc20-holding-label {
+  color: #9CA3AF;
+}
+
+.em-erc20-holding-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.em-erc20-holding-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+
+.em-erc20-holding-detail-label {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.em-app--dark .em-erc20-holding-detail-label {
+  color: #9CA3AF;
+}
+
+.em-erc20-holding-detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  cursor: text;
+  user-select: text;
+}
+
+.em-app--dark .em-erc20-holding-detail-value {
+  color: #F9FAFB;
+}
+
+.em-erc20-holding-status {
+  display: flex;
+  align-items: center;
+}
+
+.em-erc20-holding-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+
+.em-erc20-holding-status-badge--active {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.em-app--dark .em-erc20-holding-status-badge--active {
+  background: #064E3B;
+  color: #6EE7B7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .em-erc20-holding-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .em-erc20-holdings-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .em-erc20-holdings-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .em-erc20-holdings-search {
+    width: 100%;
+  }
+  
+  .em-erc20-holding-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .em-erc20-holding-right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+

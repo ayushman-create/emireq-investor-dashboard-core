@@ -1,0 +1,437 @@
+/* ============================= */
+/* Portfolio Performance Chart */
+/* ============================= */
+
+/* CSS Variables for Theming */
+:root {
+  --empp-bg-light: #FFFFFF;
+  --empp-bg-dark: #000000;
+  --empp-text-light: #111827;
+  --empp-text-dark: #F9FAFB;
+  --empp-muted-light: #6B7280;
+  --empp-muted-dark: #9CA3AF;
+  --empp-grid-light: #E5E7EB;
+  --empp-grid-dark: #374151;
+  --empp-green: #22C55E;
+  --empp-green-light: #22C55E;
+  --empp-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --empp-shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= CARD CONTAINER ================= */
+.em-portfolio-performance-chart {
+  background: var(--empp-bg-light);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--empp-shadow-light);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  contain: layout;
+  cursor: default;
+}
+
+.em-app--dark .em-portfolio-performance-chart {
+  background: #1F2937;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-portfolio-performance-chart {
+    background: var(--empp-bg-dark);
+    box-shadow: var(--empp-shadow-dark);
+  }
+}
+
+/* ================= HEADER ================= */
+.em-portfolio-performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.em-portfolio-performance-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-portfolio-performance-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.em-portfolio-performance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.em-portfolio-performance-title-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-portfolio-performance-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-portfolio-performance-title {
+    color: #F9FAFB;
+  }
+}
+
+/* Info icon */
+.em-info-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+}
+
+.em-info-icon svg {
+  display: block;
+  cursor: inherit;
+  transform: translate(-1px, 3px);
+}
+
+.em-info-icon:hover {
+  background: #6B7280;
+  transform: scale(1.1);
+}
+
+.em-info-icon:focus-visible {
+  outline: 2px solid #22C55E;
+  outline-offset: 2px;
+}
+
+.em-info-icon svg {
+  width: 10px;
+  height: 10px;
+  color: #FFFFFF;
+}
+
+.em-portfolio-performance-subtitle {
+  font-size: 12px;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-portfolio-performance-subtitle {
+    color: #9CA3AF;
+  }
+}
+
+/* ================= HEADER ACTIONS ================= */
+.em-portfolio-performance-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+.em-app--dark .em-portfolio-performance-actions {
+  background: #374151;
+  border-color: #4B5563;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-portfolio-performance-actions {
+    background: #374151;
+    border-color: #4B5563;
+  }
+}
+
+/* ICON BUTTON — identical behavior */
+.em-icon-button {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #888888;
+  transition: all 0.2s ease;
+}
+
+.em-app--dark .em-icon-button {
+  color: #9CA3AF;
+}
+
+/* Hover */
+.em-icon-button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.em-app--dark .em-icon-button:hover {
+  background: #4B5563;
+  color: #F9FAFB;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-icon-button:hover {
+    background: #374151;
+    color: #F9FAFB;
+  }
+}
+
+/* Active */
+.em-icon-button:active {
+  transform: scale(0.97);
+}
+
+/* Focus */
+.em-icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.35);
+}
+
+/* Disabled */
+.em-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-icon-button:disabled:hover {
+  background: transparent;
+  transform: none;
+  color: #6b7280;
+}
+
+.em-app--dark .em-icon-button:disabled:hover {
+  color: #9CA3AF;
+}
+
+/* ================= CHART CONTAINER ================= */
+.em-portfolio-performance-content {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  transition: height 0.3s ease;
+}
+
+.em-portfolio-performance-svg {
+  width: 100%;
+  height: 350px;
+  display: block;
+  overflow: visible;
+  transition: height 0.3s ease;
+}
+
+/* ================= GRID LINES ================= */
+.em-grid-line-horizontal {
+  stroke: #E5E7EB;
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  opacity: 0.8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-grid-line-horizontal {
+    stroke: #374151;
+    opacity: 0.6;
+  }
+}
+
+.em-grid-line-vertical {
+  stroke: #E5E7EB;
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  opacity: 0.8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-grid-line-vertical {
+    stroke: #374151;
+    opacity: 0.6;
+  }
+}
+
+/* ================= AXIS LABELS ================= */
+.em-y-label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  fill: #6B7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-y-label {
+    fill: #6B7280;
+  }
+}
+
+.em-portfolio-performance-xaxis {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px 0 65px;
+  margin-top: -50px;
+}
+
+.em-portfolio-performance-month {
+  font-size: 10px;
+  color: #6B7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-portfolio-performance-month {
+    color: #9CA3AF;
+  }
+}
+
+/* ================= LEGEND ================= */
+.em-portfolio-performance-legend {
+  display: flex;
+  gap: 24px;
+  margin-top: 22px;
+  justify-content: center;
+}
+
+.em-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #6B7280;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.em-legend-item:hover {
+  color: #374151;
+  transform: translateX(2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .em-legend-item {
+    color: #9CA3AF;
+  }
+
+  .em-legend-item:hover {
+    color: #D1D5DB;
+  }
+}
+
+.em-legend-item span {
+  cursor: inherit;
+}
+
+.em-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: inherit;
+  transition: transform 0.2s ease;
+}
+
+.em-legend-item:hover .em-legend-dot {
+  transform: scale(1.1);
+}
+
+.em-legend-dot--benchmark {
+  background: #9CA3AF;
+}
+
+.em-legend-dot--portfolio {
+  background: #22C55E;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 768px) {
+  .em-portfolio-performance-chart {
+    padding: 16px;
+  }
+  
+  .em-portfolio-performance-header {
+    margin-bottom: 16px;
+  }
+  
+  .em-portfolio-performance-title {
+    font-size: 16px;
+  }
+  
+  .em-portfolio-performance-subtitle {
+    font-size: 12px;
+  }
+  
+  .em-portfolio-performance-xaxis {
+    padding: 0 40px;
+  }
+  
+  .em-portfolio-performance-month {
+    font-size: 10px;
+  }
+  
+  .em-portfolio-performance-legend {
+    gap: 16px;
+    margin-top: 12px;
+  }
+  
+  .em-legend-item {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .em-portfolio-performance-chart {
+    padding: 12px;
+  }
+  
+  .em-portfolio-performance-title-group {
+    gap: 8px;
+  }
+  
+  .em-portfolio-performance-actions {
+    gap: 2px;
+    padding: 2px;
+  }
+  
+  .em-icon-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .em-portfolio-performance-xaxis {
+    padding: 0 30px;
+  }
+  
+  .em-portfolio-performance-legend {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}

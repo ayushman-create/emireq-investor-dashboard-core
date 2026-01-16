@@ -1,0 +1,182 @@
+/* ================= CARD ================= */
+
+.td-card {
+  width: 100%;
+  min-width: 0;
+  border-radius: 28px;
+  padding: 28px 28px 8px 28px;
+  background: #ffffff;
+  cursor: default;
+}
+
+.em-app--dark .td-card {
+  background: #1F2937;
+}
+
+
+/* ================= HEADER ================= */
+
+.td-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .td-title {
+  color: #F9FAFB;
+}
+
+.td-subtitle {
+  margin-top: 4px;
+  font-size: 15px;
+  color: #9ca3af;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .td-subtitle {
+  color: #9CA3AF;
+}
+
+/* ================= CHART ================= */
+.td-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.td-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+
+/* ================= DONUT ================= */
+
+.td-donut {
+  display: block;
+}
+
+/* Thin white rings */
+.td-donut-border {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1.5;
+}
+
+.em-app--dark .td-donut-border {
+  stroke: rgba(255, 255, 255, 0.15);
+}
+
+/* Segments */
+.td-donut-segment {
+  fill: none;
+  stroke-width: 40;              /* MATCH sector allocation */
+  stroke-linecap: butt;          /* IMPORTANT */
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.2s ease, filter 0.25s ease, opacity 0.25s ease;
+  opacity: 1;
+}
+
+/* Hover */
+.td-donut-segment:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+  opacity: 1;
+}
+
+.td-donut-segment:active {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
+/* Active state when clicked */
+.td-donut-segment.is-active {
+  transform: scale(1.01);
+  filter: brightness(1.08);
+  opacity: 1;
+  stroke-width: 41;
+}
+
+/* ================= CENTER ================= */
+
+.td-center-text {
+  font-size: 14px;
+  font-weight: 600;
+  fill: #6B7280;
+  text-anchor: middle;
+}
+
+.em-app--dark .td-center-text {
+  fill: #9CA3AF;
+}
+
+.td-icon {
+  fill: none;
+  stroke: #6B7280;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.em-app--dark .td-icon {
+  stroke: #9CA3AF;
+}
+
+
+/* ================= LEGEND ================= */
+
+.td-legend {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+  margin-bottom: 0;
+}
+
+.td-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #9ca3af;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.td-legend-item:hover {
+  color: #6b7280;
+  transform: translateY(-1px);
+}
+
+.em-app--dark .td-legend-item:hover {
+  color: #D1D5DB;
+}
+
+.td-legend-item:active {
+  transform: translateY(0);
+}
+
+.td-legend-item.is-active {
+  color: #111827;
+  font-weight: 600;
+}
+
+.em-app--dark .td-legend-item.is-active {
+  color: #F9FAFB;
+}
+
+.td-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}

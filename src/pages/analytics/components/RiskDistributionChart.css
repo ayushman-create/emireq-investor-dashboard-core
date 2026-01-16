@@ -1,0 +1,176 @@
+/* ================= CARD ================= */
+.em-risk-distribution-chart {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1),
+              0 1px 2px rgba(0,0,0,0.06);
+  width: 100%;
+  cursor: default;
+}
+
+.em-app--dark .em-risk-distribution-chart {
+  background: #1f2937;
+}
+
+/* ================= HEADER ================= */
+.em-risk-distribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.em-risk-distribution-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.em-risk-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.em-risk-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #111827;
+  cursor: default;
+  user-select: text;
+}
+
+.em-risk-subtitle {
+  font-size: 14px;
+  margin-top: 2px;
+  color: #6b7280;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-risk-title {
+  color: #f9fafb;
+}
+
+.em-app--dark .em-risk-subtitle {
+  color: #9ca3af;
+}
+
+.em-risk-menu-btn {
+  all: unset;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.em-risk-menu-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.em-app--dark .em-risk-menu-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ================= CONTENT ================= */
+.em-risk-distribution-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* RESPONSIVE DONUT */
+.em-risk-distribution-chart-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+}
+
+.em-risk-distribution-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* DONUT INTERACTION */
+.em-risk-segment {
+  cursor: pointer;
+  transition: stroke-width 0.25s ease, filter 0.25s ease;
+}
+
+.em-risk-segment:hover {
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.25));
+}
+
+/* FLOATING PILL */
+.em-risk-float-pill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 6px 12px;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.15),
+    0 2px 4px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+.em-app--dark .em-risk-float-pill {
+  background: #1F2937;
+  color: #F9FAFB;
+  border-color: #374151;
+}
+
+/* ================= LEGEND ================= */
+.em-risk-distribution-legend {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.em-risk-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.em-risk-legend-item:hover {
+  transform: translateX(2px);
+}
+
+.em-risk-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.em-risk-legend-label {
+  flex: 1;
+  font-weight: 500;
+  color: #111827;
+  cursor: inherit;
+}
+
+.em-risk-legend-value {
+  color: #6b7280;
+  font-weight: 500;
+  cursor: inherit;
+}
+
+.em-app--dark .em-risk-legend-label {
+  color: #f9fafb;
+}
+
+.em-app--dark .em-risk-legend-value {
+  color: #9ca3af;
+}

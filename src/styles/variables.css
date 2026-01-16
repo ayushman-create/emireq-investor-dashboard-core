@@ -1,0 +1,25 @@
+:root {
+  /* Text Colors - Light Mode */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  
+  /* Background Colors - Light Mode */
+  --card-bg: #FFFFFF;
+  --hover-bg: #F9FAFB;
+  --border-color: #E5E7EB;
+  
+  /* Brand Colors */
+  --primary-color: #4D7CFE;
+  --primary-hover: #3B62CC;
+}
+
+/* Dark Mode Variables */
+.em-app--dark {
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-tertiary: #9CA3AF;
+  --card-bg: #1F2937;
+  --hover-bg: #374151;
+  --border-color: #374151;
+}

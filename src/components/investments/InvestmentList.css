@@ -1,0 +1,331 @@
+/* ===== ROOT WRAPPER ===== */
+.investment-wrapper {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+  transition: width 0.28s ease;
+}
+
+.em-app--dark .investment-wrapper {
+  background: #1F2937;
+}
+
+/* ===== HEADER ===== */
+.investment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.investment-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.em-app--dark .investment-title {
+  color: #F9FAFB;
+}
+
+/* Info icon — matched with em-info-icon */
+.info-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #374151; /* dark grey */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  outline: none;
+}
+
+/* SVG alignment */
+.info-icon svg {
+  width: 10px;
+  height: 10px;
+  display: block;
+  color: #ffffff;
+
+  /* same fine-tuned offset */
+  transform: translate(-1px, 3px);
+}
+
+/* Hover */
+.info-icon:hover {
+  background: #1F2937;
+  transform: scale(1.1);
+}
+
+/* Accessibility */
+.info-icon:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.investment-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.em-app--dark .investment-subtitle {
+  color: #9CA3AF;
+}
+
+.view-all-btn {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  background: #f9fafb;
+}
+
+.em-app--dark .view-all-btn {
+  background: #374151;
+  border-color: #4B5563;
+  color: #60A5FA;
+}
+
+.em-app--dark .view-all-btn:hover {
+  background: #4B5563;
+}
+
+/* ===== LIST ===== */
+.investment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== CARD ===== */
+.investment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px 24px;
+  background: #ffffff;
+  gap: 16px;
+   column-gap: 34px;
+}
+
+.em-app--dark .investment-card {
+  background: #374151;
+  border-color: #4B5563;
+}
+
+/* ===== LEFT ===== */
+.investment-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: visible;
+  padding-right: 12px;
+}
+
+.investment-left > div:last-child {
+  flex: 1;
+  min-width: 0;
+  overflow: visible;
+}
+
+.investment-icon {
+  width: 56px;
+  height: 56px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.investment-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+  margin: 0;
+  white-space: nowrap;
+  overflow: visible;
+  display: block;
+}
+
+.em-app--dark .investment-name {
+  color: #F9FAFB;
+}
+
+.investment-category {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.em-app--dark .investment-category {
+  color: #9CA3AF;
+}
+
+/* ===== RIGHT ===== */
+.investment-right {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-shrink: 0;
+}
+
+.investment-amount {
+  text-align: left;
+  min-width: fit-content;
+}
+
+.amount-value {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.em-app--dark .amount-value {
+  color: #F9FAFB;
+}
+
+.amount-label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.em-app--dark .amount-label {
+  color: #9CA3AF;
+}
+
+/* ===== CHANGE PILL ===== */
+.investment-change {
+  background: #b7e9c5;
+  color: #00B031;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.investment-change svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.investment-change svg path {
+  stroke: #00B031;
+}
+
+
+
+
+
+/* ===== GLOBAL INTERACTION BASE ===== */
+.investment-wrapper * {
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease;
+}
+.view-all-btn:hover {
+  background: #f3f4f6;
+}
+
+.view-all-btn:active {
+  transform: scale(0.97);
+}
+
+.view-all-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+.investment-card {
+  cursor: pointer;
+}
+
+.investment-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+  border-color: #d1d5db;
+}
+
+.investment-card:active {
+  transform: translateY(0);
+}
+.investment-card:hover .investment-icon {
+  transform: scale(1.05);
+}
+.investment-card:hover .investment-name {
+  color: #020617;
+}
+
+.investment-card:hover .investment-category {
+  color: #475569;
+}
+.investment-card:hover .amount-value {
+  color: #020617;
+}
+
+.investment-card:hover .amount-label {
+  color: #475569;
+}
+
+.investment-card:hover .investment-change {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 176, 49, 0.3);
+}
+.investment-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+.investment-card {
+  animation: cardFadeUp 320ms ease both;
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

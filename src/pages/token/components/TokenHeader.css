@@ -1,0 +1,140 @@
+/* ============================= */
+/* Token Header */
+/* ============================= */
+
+.em-token-header {
+  margin-bottom: 32px;
+}
+
+.em-token-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.em-token-header-title-section {
+  flex: 1;
+}
+
+.em-token-header-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-token-header-title {
+  color: #F9FAFB;
+}
+
+.em-token-header-subtitle {
+  font-size: 15px;
+  color: #6B7280;
+  line-height: 1.5;
+  cursor: default;
+  user-select: text;
+}
+
+.em-app--dark .em-token-header-subtitle {
+  color: #9CA3AF;
+}
+
+.em-token-header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.em-token-header-export-btn,
+.em-token-header-sync-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.em-token-header-export-btn {
+  background: #FFFFFF;
+  color: #111827;
+  border: 1px solid #E5E7EB;
+}
+
+.em-token-header-export-btn:hover {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.em-token-header-export-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.em-token-header-sync-btn {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+.em-token-header-sync-btn:hover {
+  background: #1D4ED8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.em-token-header-sync-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.em-token-header-sync-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.em-token-header-export-btn svg,
+.em-token-header-sync-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.em-app--dark .em-token-header-export-btn {
+  background: #1F2937;
+  color: #F9FAFB;
+  border-color: #374151;
+}
+
+.em-app--dark .em-token-header-export-btn:hover {
+  background: #374151;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .em-token-header-top {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .em-token-header-actions {
+    width: 100%;
+  }
+  
+  .em-token-header-export-btn,
+  .em-token-header-sync-btn {
+    flex: 1;
+  }
+}
+

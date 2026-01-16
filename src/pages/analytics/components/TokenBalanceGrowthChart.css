@@ -1,0 +1,401 @@
+/* ============================= */
+/* Token Balance Growth Chart */
+/* ============================= */
+
+/* CSS Variables for Theming */
+:root {
+  --tbg-bg-light: #FFFFFF;
+  --tbg-bg-dark: #000000;
+  --tbg-text-light: #111827;
+  --tbg-text-dark: #F9FAFB;
+  --tbg-muted-light: #6B7280;
+  --tbg-muted-dark: #9CA3AF;
+  --tbg-grid-light: #E5E7EB;
+  --tbg-grid-dark: #374151;
+  --tbg-blue: #3B82F6;
+  --tbg-blue-light: #DBEAFE;
+  --tbg-tooltip-bg: #1E3A8A;
+  --tbg-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --tbg-shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= CARD CONTAINER ================= */
+.tbg-card {
+  background: var(--tbg-bg-light);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--tbg-shadow-light);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  cursor: default;
+}
+
+.em-app--dark .tbg-card {
+  background: #1F2937;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-card {
+    background: var(--tbg-bg-dark);
+    box-shadow: var(--tbg-shadow-dark);
+  }
+}
+
+/* ================= HEADER ================= */
+.tbg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.tbg-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tbg-title-info-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tbg-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  transform: translateY(-2px);
+}
+
+.tbg-title-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tbg-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.tbg-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-title {
+    color: #F9FAFB;
+  }
+}
+
+/* Info icon */
+.tbg-info-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+}
+
+.tbg-info-icon svg {
+  display: block;
+  cursor: inherit;
+  transform: translate(-1px, 1px);
+}
+
+.tbg-info-icon:hover {
+  background: #6B7280;
+  transform: scale(1.1);
+}
+
+.tbg-info-icon:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.tbg-info-icon svg {
+  width: 10px;
+  height: 10px;
+  color: #FFFFFF;
+}
+
+.tbg-subtitle {
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0;
+  cursor: default;
+  user-select: text;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-subtitle {
+    color: #9CA3AF;
+  }
+}
+
+/* ================= HEADER ACTIONS ================= */
+.tbg-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+.em-app--dark .tbg-header-actions {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-header-actions {
+    background: #1F2937;
+    border-color: #374151;
+  }
+}
+
+/* ICON BUTTON — identical behavior */
+.tbg-icon-button {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+}
+
+.em-app--dark .tbg-icon-button {
+  color: #9CA3AF;
+}
+
+/* Hover */
+.tbg-icon-button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.em-app--dark .tbg-icon-button:hover {
+  background: #374151;
+  color: #F9FAFB;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-icon-button:hover {
+    background: #374151;
+    color: #F9FAFB;
+  }
+}
+
+/* Active */
+.tbg-icon-button:active {
+  transform: scale(0.97);
+}
+
+/* Focus */
+.tbg-icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+
+/* Disabled */
+.tbg-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tbg-icon-button:disabled:hover {
+  background: transparent;
+  transform: none;
+  color: #6b7280;
+}
+
+/* ================= CHART CONTAINER ================= */
+.tbg-chart-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+}
+
+.tbg-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* ================= GRID LINES ================= */
+.tbg-grid-line {
+  stroke: var(--tbg-grid-light);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0.8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-grid-line {
+    stroke: var(--tbg-grid-dark);
+    opacity: 0.6;
+  }
+}
+
+/* ================= AXIS LABELS ================= */
+.tbg-y-label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--tbg-muted-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-y-label {
+    fill: var(--tbg-muted-dark);
+  }
+}
+
+.tbg-x-label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--tbg-muted-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-x-label {
+    fill: var(--tbg-muted-dark);
+  }
+}
+
+/* ================= BARS ================= */
+.tbg-bg-bar {
+  transition: opacity 0.15s ease;
+}
+
+.tbg-bar {
+  fill: var(--tbg-blue);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  rx: 4;
+}
+
+.tbg-bar:hover {
+  opacity: 0.8;
+}
+
+/* ================= HOVER DOT ================= */
+.tbg-hover-dot {
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+/* ================= TOOLTIP ================= */
+.tbg-tooltip {
+  position: absolute;
+  background: var(--tbg-tooltip-bg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: var(--tbg-shadow-light);
+  pointer-events: none;
+  z-index: 1000;
+  min-width: 80px;
+  transition: opacity 0.15s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tbg-tooltip {
+    box-shadow: var(--tbg-shadow-dark);
+  }
+}
+
+.tbg-tooltip-quarter {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.tbg-tooltip-roi {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .tbg-card {
+    padding: 20px;
+  }
+  
+  .tbg-header {
+    margin-bottom: 24px;
+  }
+  
+  .tbg-title {
+    font-size: 16px;
+  }
+  
+  .tbg-subtitle {
+    font-size: 12px;
+  }
+  
+  .tbg-action-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .tbg-y-label,
+  .tbg-x-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tbg-card {
+    padding: 16px;
+  }
+  
+  .tbg-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .tbg-header-actions {
+    justify-content: flex-end;
+  }
+  
+  .tbg-chart-container {
+    min-height: 240px;
+  }
+}

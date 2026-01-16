@@ -1,0 +1,341 @@
+/* Governance tab styles */
+
+.em-gov-root {
+  padding: 1px 4px 4px;
+}
+
+.em-gov-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.gov-card.wide {
+  background: var(--panel);
+  padding: 24px 32px;
+  border-radius: 16px;
+  box-shadow: 0 1px 0 rgba(16,24,40,0.04);
+  border: 1px solid rgba(16,24,40,0.03);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.em-app--dark .gov-card.wide {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+}
+
+.gov-card.wide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(16,24,40,0.08);
+}
+
+.em-app--dark .gov-card.wide:hover {
+  box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+}
+
+.gov-card.wide:active {
+  transform: translateY(-2px) scale(0.998);
+}
+
+.gov-card.wide:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.08);
+}
+
+/* Figma-specific: make Board Composition card white with a visible border */
+.gov-card.wide.board-composition {
+  background: #ffffff;
+  border: 1px solid rgba(16,24,40,0.08);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  padding: 24px 32px;
+  border-radius: 16px;
+}
+
+.em-app--dark .gov-card.wide.board-composition {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Remove the light stat background inside the board composition so text sits on white */
+.board-composition .stat{
+  background: transparent !important;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.board-composition .stat:hover {
+  background: transparent !important;
+  opacity: 0.8;
+}
+
+.em-app--dark .board-composition .stat:hover {
+  background: transparent !important;
+  opacity: 0.7;
+}
+
+.board-composition .stat-label{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.em-app--dark .board-composition .stat-label{
+  color: #94A3B8;
+}
+
+.board-composition .stat-value{
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-strong);
+  margin: 0 0 16px 0;
+}
+
+.em-app--dark .board-composition .stat-value{
+  color: #E6EEF9;
+}
+
+/* Make Management and Governance Practices cards match the Figma card too */
+.gov-card.wide.management,
+.gov-card.wide.governance-practices{
+  background: #ffffff;
+  border: 1px solid rgba(16,24,40,0.08);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  padding: 24px 32px;
+  border-radius: 16px;
+}
+
+.em-app--dark .gov-card.wide.management,
+.em-app--dark .gov-card.wide.governance-practices{
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Adjust management item spacing to match Figma layout */
+.management-grid { gap: 28px 40px }
+.mgmt-item { padding: 10px 0 }
+.avatar{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+.mgmt-name{font-weight:700;font-size:18px;color:var(--text-strong)}
+
+/* Ensure practices list sits cleanly on white */
+.governance-practices .practice-item{padding:8px 0}
+
+/* Make Management card match Figma: white background, visible border */
+.gov-card.wide.management{
+  background: #ffffff;
+  border: 1px solid rgba(16,24,40,0.08);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  padding: 24px 32px;
+  border-radius: 16px;
+}
+
+.em-app--dark .gov-card.wide.management{
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.gov-card.wide.management .mgmt-item{
+  padding:8px 0;
+}
+
+.gov-card.wide.management .avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+
+.gov-card.wide.management .mgmt-name{font-weight:600;font-size:15px;color:var(--text-strong)}
+
+.gov-card.wide.management .mgmt-role,.gov-card.wide.management .mgmt-years{font-size:13px;color:var(--muted);margin-top:4px}
+
+.gov-card h4 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #0F1724;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.em-app--dark .gov-card h4 {
+  color: #E6EEF9;
+}
+
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 40px;
+}
+
+.mgmt-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.mgmt-item:hover,
+.mgmt-item.hovered {
+  transform: translateX(4px);
+  opacity: 0.9;
+}
+.em-app--dark .mgmt-item:hover {
+  opacity: 0.85;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.mgmt-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+.mgmt-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #0F1724;
+  line-height: 1.4;
+}
+.em-app--dark .mgmt-name {
+  color: #E6EEF9;
+}
+.mgmt-role {
+  font-size: 13px;
+  color: #6B7280;
+  line-height: 1.5;
+}
+.em-app--dark .mgmt-role {
+  color: #94A3B8;
+}
+.mgmt-years {
+  font-size: 13px;
+  color: #9AA3B2;
+  line-height: 1.5;
+}
+.em-app--dark .mgmt-years {
+  color: #7B8899;
+}
+
+.board-grid-two{display:flex;gap:16px}
+.board-left,.board-right{flex:1;display:flex;flex-direction:column;gap:10px}
+.stat {
+  background:rgba(16,24,40,0.02);
+  padding:10px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.em-app--dark .stat {
+  background: rgba(255,255,255,0.03);
+}
+
+.stat:hover {
+  
+  transform: translateX(2px);
+}
+.em-app--dark .stat:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.stat-label{font-size:12px;color:var(--muted)}
+
+.em-app--dark .stat-label{
+  color: #94A3B8;
+}
+
+.stat-value{font-weight:600;font-size:14px}
+
+.em-app--dark .stat-value{
+  color: #E6EEF9;
+}
+
+.practices-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
+.practice-item {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.practice-item:hover,
+.practice-item.hovered {
+  opacity: 0.85;
+  transform: translateX(2px);
+}
+.em-app--dark .practice-item:hover,
+.em-app--dark .practice-item.hovered {
+  opacity: 0.8;
+}
+.practice-title{
+  font-weight: 500;
+  font-size: 16px;
+  color: #111827;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.em-app--dark .practice-title{
+  color: #E6EEF9;
+}
+
+.practice-sub{
+  font-size: 14px;
+  color: #9CA3AF;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.em-app--dark .practice-sub{
+  color: #94A3B8;
+}
+
+/* Nudge the checkmark SVG down to visually align with text */
+.practice-left svg{
+  display:block;
+  margin-top: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.practice-left {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.practice-text {
+  flex: 1;
+}
+
+@media (max-width:1000px){
+  .management-grid{grid-template-columns:1fr}
+  .board-grid-two{flex-direction:column}
+}
+
+/* SVG icon dark mode support */
+.em-app--dark .practice-left svg path {
+  stroke: #34D399;
+  transition: stroke 0.2s ease;
+}

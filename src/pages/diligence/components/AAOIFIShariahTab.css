@@ -1,0 +1,169 @@
+:root{
+  --card-bg: #ffffff;
+  --muted: #6B7280;
+  --text: #111827;
+  --border: #E6E9EE;
+  --accent: #10B981;
+}
+.em-app--dark .em-shariah-root{ --card-bg:#1F2937; --muted:#9CA3AF; --text:#F9FAFB; --border:#374151; --accent:#34D399; }
+.em-shariah--dark{ --card-bg:#071222; --muted:#9CA3AF; --text:#E6EEF8; --border:#1f2a38 }
+
+.em-shariah-root{ display:flex; flex-direction:column; gap:18px }
+.em-shariah-root .card{ 
+  background:var(--card-bg); 
+  border:1px solid var(--border); 
+  border-radius:12px; 
+  padding:20px 24px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.em-shariah-root .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(16,24,40,0.06);
+}
+
+.em-shariah-root .card:active {
+  transform: translateY(-2px) scale(0.998);
+}
+
+.em-shariah-hero h3{ margin:0 0 22px 0; font-size:20px; color:var(--text); font-weight: 600 }
+.em-shariah-hero p{ margin:0; color:var(--muted); font-size: 14px; line-height: 1.6 }
+
+.em-shariah-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:16px }
+.em-shariah-card h4{ margin:0 0 20px 0; color:var(--text); font-size:18px; font-weight: 600 }
+.em-check-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px }
+.em-check-list li{ 
+  display:flex; 
+  gap:12px; 
+  align-items:flex-start; 
+  color:#0F1724;
+  cursor: pointer;
+  padding: 2px 0;
+  border-radius: 6px;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.em-app--dark .em-check-list li { color:var(--text); }
+
+.em-check-list li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.em-check-list li:hover {
+  background: rgba(0, 0, 0, 0.02);
+  opacity: 0.9;
+}
+
+.em-shariah--dark .em-check-list li:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.em-ratio-row{ 
+  display:flex; 
+  justify-content:space-between; 
+  align-items: center;
+  color:#6B7280; 
+  margin-bottom:16px;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.em-ratio-row span{
+  color: #6B7280;
+}
+.em-app--dark .em-ratio-row span { color:#9CA3AF; }
+.em-ratio-row strong{
+  color: #0F1724;
+  font-weight: 600;
+}
+.em-app--dark .em-ratio-row strong { color:var(--text); }
+.em-shariah--dark .em-ratio-row strong{
+  color: var(--text);
+}
+.em-ratio-row:last-child{
+  margin-bottom: 0;
+}
+
+.em-ratio-row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.em-shariah--dark .em-ratio-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.em-shariah-gov{ grid-column: 1 / -1 }
+
+.em-shariah-actions{ display:flex; justify-content:flex-end; gap:12px; align-items:center }
+.em-btn{ 
+  padding:12px 20px; 
+  border-radius:12px; 
+  cursor:pointer; 
+  border:1px solid transparent; 
+  display:inline-flex; 
+  gap:8px; 
+  align-items:center;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.em-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.em-btn:active {
+  transform: translateY(0);
+}
+.em-btn--ghost{ 
+  background:#FFFFFF; 
+  border:1px solid #E5E7EB; 
+  color:#111827;
+}
+.em-app--dark .em-btn--ghost { background:#374151; border-color:#4B5563; color:#F9FAFB; }
+
+.em-btn--ghost:hover {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+}
+.em-app--dark .em-btn--ghost:hover { background:#4B5563; border-color:#6B7280; }
+
+.em-shariah--dark .em-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.em-btn--primary{ 
+  background:#10B981; 
+  color:white; 
+  border:none;
+}
+.em-app--dark .em-btn--primary { background:#34D399; }
+
+.em-btn--primary:hover {
+  background: #059669;
+}
+.em-app--dark .em-btn--primary:hover { background:#10B981; }
+
+@media (max-width: 980px){
+  .em-shariah-grid{ grid-template-columns: 1fr }
+  .em-shariah-actions{ justify-content:space-between }
+}
+
+/* wider layout when sidebar collapsed */
+.em-shariah--wide .em-shariah-root{ max-width:100% }
+
+/* SVG icon dark mode support */
+.em-app--dark .em-check-list svg path {
+  stroke: #34D399;
+  transition: stroke 0.2s ease;
+}
+
+.em-shariah--dark .em-check-list svg path {
+  stroke: #34D399;
+}
