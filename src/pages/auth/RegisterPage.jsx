@@ -202,16 +202,27 @@ export default function RegisterPage() {
   const renderStepIndicators = () => {
     return (
       <div className="register-step-indicators">
-        {[...Array(totalSteps)].map((_, index) => (
-          <div
-            key={index + 1}
-            className={`register-step-indicator ${
-              currentStep === index + 1 ? 'active' : currentStep > index + 1 ? 'completed' : ''
-            }`}
-          >
-            {index + 1}
-          </div>
-        ))}
+        {[...Array(totalSteps)].map((_, index) => {
+          const isCompleted = currentStep > index + 1;
+          const isActive = currentStep === index + 1;
+          
+          return (
+            <div
+              key={index + 1}
+              className={`register-step-indicator ${
+                isActive ? 'active' : isCompleted ? 'completed' : ''
+              }`}
+            >
+              {isCompleted ? (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 14.5C5 14.5 6.5 14.5 8.5 18C8.5 18 14.059 8.833 19 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ) : (
+                index + 1
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   };
