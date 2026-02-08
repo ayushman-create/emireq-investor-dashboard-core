@@ -1,0 +1,42 @@
+
+import { BASE_URL } from "../../services/endPoints";
+import { investorToken } from "../../utils/utils";
+
+
+async function postData(url, payload) {
+  try {
+    const response = await fetch(BASE_URL + url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response) {
+      const result = await response.json();
+      return result;
+    } else {
+      console.error("Error:", response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+const getData = async (url) => {
+  const settings = {
+    headers: {
+      Authorization: `Token ${investorToken}`,
+    },
+  };
+  const response = await fetch(BASE_URL + url, settings);
+  if (response) {
+    const result = await response.json();
+    return result;
+  }
+};
+
+export const registerInvestor = (url, payload) => postData(url, payload);
+export const loginInvestor = (url, payload) => postData(url, payload);
+export const getInvestorProfileData = (url) => getData(url);

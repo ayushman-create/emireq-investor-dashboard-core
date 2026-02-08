@@ -6,10 +6,15 @@ import InvestorProfile from "./components/InvestorProfile";
 import Financials from "./components/Financials";
 import Interests from "./components/Interests";
 import ProfileSidebar from "./components/ProfileSidebar";
+import { getInvestorProfileData } from "../../apiRequests/investorsAPI/investorsApiCall";
+import { INVESTROR_PROFILE_ENDPOINT } from "../../services/endPoints";
 
 export default function ProfilePage({ toggleTheme }) {
   const [profileOpen, setProfileOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
+  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
+
   const profileRef = useRef(null);
 
   useEffect(() => {
@@ -23,6 +28,10 @@ export default function ProfilePage({ toggleTheme }) {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    getProfileData();
+  }, []);
+
   const tabs = [
     { id: "overview", label: "Overview" },
     { id: "investor-profile", label: "Investor Profile" },
@@ -33,13 +42,17 @@ export default function ProfilePage({ toggleTheme }) {
   const handleTabSwitch = (tabId) => {
     setActiveTab(tabId);
     // Smooth scroll to top when switching tabs
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "overview":
-        return <ProfileOverview onEditClick={() => handleTabSwitch("investor-profile")} />;
+        return (
+          <ProfileOverview
+            onEditClick={() => handleTabSwitch("investor-profile")}
+          />
+        );
       case "investor-profile":
         return <InvestorProfile />;
       case "financials":
@@ -47,7 +60,20 @@ export default function ProfilePage({ toggleTheme }) {
       case "interests":
         return <Interests />;
       default:
-        return <ProfileOverview onEditClick={() => handleTabSwitch("investor-profile")} />;
+        return (
+          <ProfileOverview
+            onEditClick={() => handleTabSwitch("investor-profile")}
+          />
+        );
+    }
+  };
+
+  const getProfileData = async () => {
+    const response = await getInvestorProfileData(INVESTROR_PROFILE_ENDPOINT);
+    console.log(response);
+    if (response.ok) {
+      setProfile(response.profile);
+      setUser(response.profile.user);
     }
   };
 
@@ -71,59 +97,109 @@ export default function ProfilePage({ toggleTheme }) {
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <g clipPath="url(#clip0_114_12193)">
-                <path d="M7.99935 11.3327C9.8403 11.3327 11.3327 9.8403 11.3327 7.99935C11.3327 6.1584 9.8403 4.66602 7.99935 4.66602C6.1584 4.66602 4.66602 6.1584 4.66602 7.99935C4.66602 9.8403 6.1584 11.3327 7.99935 11.3327Z" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M8 0.666016V1.99935" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M8 14V15.3333" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2.8125 2.8125L3.75917 3.75917" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12.2402 12.2402L13.1869 13.1869" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M0.666016 8H1.99935" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 8H15.3333" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2.8125 13.1869L3.75917 12.2402" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12.2402 3.75917L13.1869 2.8125" stroke="#2F2F33" strokeLinecap="round" strokeLinejoin="round"/>
+                <path
+                  d="M7.99935 11.3327C9.8403 11.3327 11.3327 9.8403 11.3327 7.99935C11.3327 6.1584 9.8403 4.66602 7.99935 4.66602C6.1584 4.66602 4.66602 6.1584 4.66602 7.99935C4.66602 9.8403 6.1584 11.3327 7.99935 11.3327Z"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 0.666016V1.99935"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 14V15.3333"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M2.8125 2.8125L3.75917 3.75917"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12.2402 12.2402L13.1869 13.1869"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M0.666016 8H1.99935"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M14 8H15.3333"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M2.8125 13.1869L3.75917 12.2402"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12.2402 3.75917L13.1869 2.8125"
+                  stroke="#2F2F33"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </g>
               <defs>
                 <clipPath id="clip0_114_12193">
-                  <rect width="16" height="16" fill="white"/>
+                  <rect width="16" height="16" fill="white" />
                 </clipPath>
               </defs>
             </svg>
           </button>
 
-         
- {/* SEARCH */}
-<div className="em-header-search">
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="em-header-search-icon"
-  >
-    <path
-      d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
-      stroke="#2F2F33"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M13.9996 13.9996L11.0996 11.0996"
-      stroke="#2F2F33"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+          {/* SEARCH */}
+          <div className="em-header-search">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="em-header-search-icon"
+            >
+              <path
+                d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+                stroke="#2F2F33"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M13.9996 13.9996L11.0996 11.0996"
+                stroke="#2F2F33"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
 
-  <input
-    type="text"
-    placeholder="Search"
-    className="em-header-search-input"
-  />
-</div>
+            <input
+              type="text"
+              placeholder="Search"
+              className="em-header-search-input"
+            />
+          </div>
 
           {/* NOTIFICATION */}
           <button className="em-header-notification">
@@ -190,10 +266,12 @@ export default function ProfilePage({ toggleTheme }) {
               <div className="em-profile-dropdown">
                 <div className="em-profile-user">
                   <img src={avatar} alt="User" />
-                  <div>
-                    <div className="em-profile-name">John Doe</div>
-                    <div className="em-profile-email">johndoe@gmail.com</div>
-                  </div>
+                  {user && (
+                    <div>
+                      <div className="em-profile-name">{user.username}</div>
+                      <div className="em-profile-email">{user.email}</div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="em-profile-divider" />
@@ -211,7 +289,11 @@ export default function ProfilePage({ toggleTheme }) {
       {/* ================= PAGE TITLE ================= */}
       <div className="profile-title-row">
         <h1 className="profile-title">My Profile</h1>
-        <span className="profile-status-pill">Approved</span>
+        {profile && profile.is_approved ? (
+          <span className="profile-status-pill">Approved</span>
+        ) : (
+          <span className="profile-status-error-pill">Not Approved</span>
+        )}
       </div>
 
       {/* ================= PROFILE CONTENT ================= */}
@@ -222,30 +304,44 @@ export default function ProfilePage({ toggleTheme }) {
           <div className="profile-header-card">
             <div className="profile-header-left">
               <div className="profile-avatar-large">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   {/* Main building */}
-                  <rect x="3" y="10" width="8" height="10" fill="white"/>
-                  <rect x="4" y="11" width="2" height="2" fill="#9CA3AF"/>
-                  <rect x="7" y="11" width="2" height="2" fill="#9CA3AF"/>
-                  <rect x="4" y="15" width="2" height="2" fill="#9CA3AF"/>
-                  <rect x="7" y="15" width="2" height="2" fill="#9CA3AF"/>
+                  <rect x="3" y="10" width="8" height="10" fill="white" />
+                  <rect x="4" y="11" width="2" height="2" fill="#9CA3AF" />
+                  <rect x="7" y="11" width="2" height="2" fill="#9CA3AF" />
+                  <rect x="4" y="15" width="2" height="2" fill="#9CA3AF" />
+                  <rect x="7" y="15" width="2" height="2" fill="#9CA3AF" />
                   {/* Taller building */}
-                  <rect x="13" y="6" width="6" height="14" fill="white"/>
-                  <rect x="14" y="8" width="2" height="2" fill="#9CA3AF"/>
-                  <rect x="14" y="12" width="2" height="2" fill="#9CA3AF"/>
-                  <rect x="14" y="16" width="2" height="2" fill="#9CA3AF"/>
+                  <rect x="13" y="6" width="6" height="14" fill="white" />
+                  <rect x="14" y="8" width="2" height="2" fill="#9CA3AF" />
+                  <rect x="14" y="12" width="2" height="2" fill="#9CA3AF" />
+                  <rect x="14" y="16" width="2" height="2" fill="#9CA3AF" />
                 </svg>
               </div>
-              <div className="profile-header-info">
-                <div className="profile-name-row">
-                  <h2 className="profile-name">Aurum Strategies</h2>
-                  <span className="profile-verification-badge not-verified">Not Verified</span>
+              {user && (
+                <div className="profile-header-info">
+                  <div className="profile-name-row">
+                    <h2 className="profile-name">{user.username}</h2>
+                    <span className="profile-verification-badge not-verified">
+                      Not Verified
+                    </span>
+                  </div>
+                  <p className="profile-username">
+                    {user.username} • London, UK
+                  </p>
                 </div>
-                <p className="profile-username">investor_aurum • London, UK</p>
-              </div>
+              )}
             </div>
             <div className="profile-header-right">
-              <span className="profile-investor-type-badge">Angel Investor</span>
+              <span className="profile-investor-type-badge">
+                Angel Investor
+              </span>
             </div>
           </div>
 
@@ -263,9 +359,7 @@ export default function ProfilePage({ toggleTheme }) {
           </div>
 
           {/* Tab Content */}
-          <div className="profile-tab-content">
-            {renderTabContent()}
-          </div>
+          <div className="profile-tab-content">{renderTabContent()}</div>
         </div>
 
         {/* RIGHT: Sidebar */}
