@@ -1,0 +1,274 @@
+.container {
+  padding: 3rem;
+  background-color: #eae6e2;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* LEFT */
+.left {
+  padding: 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 70%;
+  border-radius: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.welcome {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 1.5rem;
+}
+
+.logoIcon {
+  background: #ffc107;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  color: #717182;
+  margin-bottom: 2rem;
+  font-size: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  font-size: 14px;
+  margin-bottom: 0.3rem;
+}
+
+.field input {
+  padding: 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.primaryBtn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #ffc107;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.links {
+  text-align: center;
+  margin: 2rem 0rem;
+}
+.forgot {
+  color: #717182;
+  cursor: pointer;
+  float: inline-end;
+  text-decoration: underline;
+}
+
+.divider {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin: 1.2rem 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.socialBtnContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialBtn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 25px;
+  border: 1px solid #71718252;
+  width: 48px;
+  height: 48px;
+}
+
+/* RIGHT */
+.right {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: #ffffff1a;
+  backdrop-filter: blur(10px);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  text-align: center;
+}
+
+.trusted {
+  font-size: 14px;
+  background-color: #ffffff1f;
+  opacity: 0.9;
+  padding: 10px;
+  border-radius: 16px;
+  border: 0.8px solid #ffffff4d;
+}
+
+.heroContent h1 {
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 76px;
+  letter-spacing: 0px;
+}
+
+.heroContent p {
+  max-width: 420px;
+  font-size: 20px;
+}
+
+.heroContent li p {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.heroContent li p span {
+  background-color: #ffc30014;
+  border-radius: 50%;
+  padding: 8px;
+  width: 38px;
+  color: #ffc300;
+  height: 38px;
+}
+
+.heroContent ul {
+  list-style: none;
+  padding: 0;
+  font-size: 20px;
+  color: #cbdbfc;
+}
+
+.heroContent li {
+  margin-bottom: 0.6rem;
+}
+
+.inputError {
+  border: 1px solid #dc2626 !important;
+}
+
+.errorText {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 10px;
+  display: inline-flex;
+  gap: 5px;
+}
+
+.links {
+  color: #717182;
+}
+
+.links b {
+  color: #152b5a;
+  text-decoration: underline;
+}
+
+.businessText {
+  color: #717182;
+  text-align: center;
+}
+
+.loginErrorContainer {
+  background-color: #fef2f2;
+  border-radius: 10px;
+  text-align: center;
+  color: #9f0712;
+  border: 1px solid #ffc9c9;
+  margin-bottom: 20px;
+}
+
+.loginErrorContainer p {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.dashboardsImg {
+  width: 100%;
+  margin-top: 30%;
+  margin-bottom: 12%;
+}
+
+.accesText {
+  text-align: left;
+  display: block;
+  margin-top: 5rem;
+  margin-bottom: 0px;
+  font-size: 36px !important;
+  color: #121212;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    display: none;
+  }
+}

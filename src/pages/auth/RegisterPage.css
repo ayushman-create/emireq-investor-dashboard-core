@@ -583,6 +583,7 @@
   letter-spacing: 0;
   border: none;
   user-select: none;
+  width: 100%;
 }
 
 .register-back-btn {

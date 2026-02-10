@@ -9,6 +9,8 @@ import sevenImg from "../../assets/seven.png";
 import eightImg from "../../assets/eight.png";
 import emireqLogo from "../../assets/emireq-logo.png";
 import "./RegisterPage.css";
+import { getPreview } from "../../apiRequests/investorsAPI/investorsApiCall";
+import { INVESTROR_PREVIEW } from "../../services/endPoints";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ export default function RegisterPage() {
   const [currentStep, setCurrentStep] = useState(
     location.state?.currentStep || 1,
   );
+
   const totalSteps = 8;
 
   // Form data for all steps
@@ -62,6 +65,17 @@ export default function RegisterPage() {
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  
+  const getUserDetails = async () => {
+    const payload = {
+      full_name: formData.fullName,
+      country: formData.country,
+      investor_type: "individual",
+      ai_linkedin: "",
+    };
+    const response = await getPreview(INVESTROR_PREVIEW, payload);
+    console.log(response);
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -339,6 +353,7 @@ export default function RegisterPage() {
                 <span className="register-form-error">{errors.country}</span>
               )}
             </div>
+            <button className="register-continue-btn" onClick={() => getUserDetails()}>Fetch Data</button>
           </>
         );
 

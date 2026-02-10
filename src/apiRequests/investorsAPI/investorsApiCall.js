@@ -1,7 +1,5 @@
-
 import { BASE_URL } from "../../services/endPoints";
 import { investorToken } from "../../utils/utils";
-
 
 async function postData(url, payload) {
   try {
@@ -9,6 +7,7 @@ async function postData(url, payload) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Token ${investorToken}`,
       },
       body: JSON.stringify(payload),
     });
@@ -39,4 +38,5 @@ const getData = async (url) => {
 
 export const registerInvestor = (url, payload) => postData(url, payload);
 export const loginInvestor = (url, payload) => postData(url, payload);
+export const getPreview = (url, payload) => postData(url, payload);
 export const getInvestorProfileData = (url) => getData(url);
