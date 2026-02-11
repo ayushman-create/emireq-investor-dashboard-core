@@ -1,14 +1,18 @@
 import { BASE_URL } from "../../services/endPoints";
 import { investorToken } from "../../utils/utils";
 
-async function postData(url, payload) {
+async function postData(url, payload, isToken) {
   try {
     const response = await fetch(BASE_URL + url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${investorToken}`,
-      },
+      headers: isToken
+        ? {
+            "Content-Type": "application/json",
+            Authorization: `Token ${investorToken}`,
+          }
+        : {
+            "Content-Type": "application/json",
+          },
       body: JSON.stringify(payload),
     });
 

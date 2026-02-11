@@ -73,7 +73,8 @@ export default function RegisterPage() {
       investor_type: "individual",
       ai_linkedin: "",
     };
-    const response = await getPreview(INVESTROR_PREVIEW, payload);
+    const isToken = true
+    const response = await getPreview(INVESTROR_PREVIEW, payload, isToken);
     console.log(response);
   };
 
