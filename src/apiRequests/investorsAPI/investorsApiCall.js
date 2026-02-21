@@ -3,6 +3,7 @@ import { investorToken } from "../../utils/utils";
 
 async function postData(url, payload, isToken) {
   try {
+    console.log("investorToken", investorToken)
     const response = await fetch(BASE_URL + url, {
       method: "POST",
       headers: isToken
@@ -40,7 +41,7 @@ const getData = async (url) => {
   }
 };
 
-export const registerInvestor = (url, payload) => postData(url, payload);
+export const registerInvestor = (url, payload, isToken) => postData(url, payload, isToken);
 export const loginInvestor = (url, payload) => postData(url, payload);
-export const getPreview = (url, payload) => postData(url, payload);
+export const getPreview = (url, payload, isToken) => postData(url, payload, isToken);
 export const getInvestorProfileData = (url) => getData(url);
