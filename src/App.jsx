@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import ProfilePage from "./pages/profile/ProfilePage";
@@ -14,6 +21,7 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import ReviewPage from "./pages/auth/ReviewPage";
 import LogoutModal from "./components/modals/LogoutModal";
 import "./App.css";
+import GlobalLoader from "./components/loader/GlobalLoader";
 
 function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -41,7 +49,7 @@ function AppContent() {
     sessionStorage.clear();
     setShowLogoutModal(false);
     // Navigate to login page
-    navigate('/login');
+    navigate("/login");
   };
 
   const handleLogoutCancel = () => {
@@ -49,40 +57,94 @@ function AppContent() {
   };
 
   // Don't show sidebar on login page or signup page
-  const isLoginPage = location.pathname === '/login';
-  const isSignupPage = location.pathname === '/signup';
-  const isRegisterPage = location.pathname === '/register';
-  const isReviewPage = location.pathname === '/review';
-  const isAuthPage = isLoginPage || isSignupPage || isRegisterPage || isReviewPage;
+  const isLoginPage = location.pathname === "/login";
+  const isSignupPage = location.pathname === "/signup";
+  const isRegisterPage = location.pathname === "/register";
+  const isReviewPage = location.pathname === "/review";
+  const isAuthPage =
+    isLoginPage || isSignupPage || isRegisterPage || isReviewPage;
 
   return (
-    <div className={`em-app ${isDarkMode ? 'em-app--dark' : ''}`}>
+    <div className={`em-app ${isDarkMode ? "em-app--dark" : ""}`}>
       {!isAuthPage && (
-        <Sidebar 
-          collapsed={sidebarCollapsed} 
+        <Sidebar
+          collapsed={sidebarCollapsed}
           onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
           onLogoutClick={handleLogoutClick}
         />
       )}
 
-      <main className={`em-main ${sidebarCollapsed ? 'em-main--expanded' : ''} ${isAuthPage ? 'em-main--full' : ''}`}>
+      <main
+        className={`em-main ${sidebarCollapsed ? "em-main--expanded" : ""} ${isAuthPage ? "em-main--full" : ""}`}
+      >
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/review" element={<ReviewPage />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/dashboard" element={<Dashboard isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/diligence" element={<DueDiligencePage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/profile" element={<ProfilePage toggleTheme={toggleTheme} />} />
-          <Route path="/portfolio" element={<Portfolio toggleTheme={toggleTheme} />} />
-          <Route path="/documents" element={<DocumentsPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/dashboard/token" element={<TokenPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/dashboard/analytics" element={<AnalyticsPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/diligence"
+            element={
+              <DueDiligencePage
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={<ProfilePage toggleTheme={toggleTheme} />}
+          />
+          <Route
+            path="/portfolio"
+            element={<Portfolio toggleTheme={toggleTheme} />}
+          />
+          <Route
+            path="/documents"
+            element={
+              <DocumentsPage
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/dashboard/token"
+            element={
+              <TokenPage
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/dashboard/analytics"
+            element={
+              <AnalyticsPage
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
         </Routes>
       </main>
 
-      <LogoutModal 
+      <LogoutModal
         isOpen={showLogoutModal}
         onClose={handleLogoutCancel}
         onConfirm={handleLogoutConfirm}
@@ -94,6 +156,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
+      <GlobalLoader />
       <AppContent />
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginInvestor } from "../../apiRequests/investorsAPI/investorsApiCall";
 import { INVESTROR_LOGIN_ENDPOINT } from "../../services/endPoints";
 import emireqLogo from "../../assets/emireq-logo.png";
@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoginError, setIsloginError] = useState(false);
-  const [keepSignedIn, setKeepSignedIn] = useState(false)
+  const [keepSignedIn, setKeepSignedIn] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleLogin = async (e) => {
@@ -199,9 +199,9 @@ export default function LoginPage() {
                 />
                 <span className="login-checkbox-text">Keep me signed in</span>
               </label>
-              <a href="/forgot-password" className="login-forgot-link">
+              <Link to="/forgot-password" className="login-forgot-link">
                 Forget Password
-              </a>
+              </Link>
             </div>
           </form>
 
@@ -211,9 +211,9 @@ export default function LoginPage() {
 
           <p className="login-register-text">
             Don't have an account?{" "}
-            <a href="/signup" className="login-register-link">
+            <Link to="/signup" className="login-register-link">
               Register
-            </a>
+            </Link>
           </p>
 
           <div className="login-social-text">

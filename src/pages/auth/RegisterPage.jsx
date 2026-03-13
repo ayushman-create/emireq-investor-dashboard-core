@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import backgroundImg from "../../assets/background-login.png";
 import oneImg from "../../assets/one.png";
 import emireqLogo from "../../assets/emireq-logo.png";
@@ -36,7 +36,10 @@ export default function RegisterPage() {
     };
     const isToken = true;
     const response = await getPreview(INVESTROR_PREVIEW, payload, isToken);
-    console.log(response);
+    if (response.ok) {
+      localStorage.setItem("previewData", JSON.stringify(response.preview));
+      navigate("/review");
+    }
   };
 
   const handleChange = (e) => {
@@ -292,9 +295,9 @@ export default function RegisterPage() {
 
             <p className="register-support-text">
               Need assistance?{" "}
-              <a href="/support" className="register-support-link">
+              <Link to="/support" className="register-support-link">
                 Contact Support
-              </a>
+              </Link>
             </p>
           </div>
         </div>

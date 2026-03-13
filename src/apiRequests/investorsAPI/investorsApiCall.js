@@ -1,9 +1,12 @@
+import { hideLoader, showLoader } from "../../redux/reducers/loaderSlice";
 import { BASE_URL } from "../../services/endPoints";
 import { investorToken } from "../../utils/utils";
+import { dispatch } from "../../redux/store";
 
 async function postData(url, payload, isToken) {
   try {
-    console.log("investorToken", investorToken)
+    dispatch(showLoader()); // ✅ start loader
+
     const response = await fetch(BASE_URL + url, {
       method: "POST",
       headers: isToken
@@ -17,31 +20,47 @@ async function postData(url, payload, isToken) {
       body: JSON.stringify(payload),
     });
 
-    if (response) {
-      const result = await response.json();
-      return result;
-    } else {
-      console.error("Error:", response.status, response.statusText);
-    }
+    const result = await response.json();
+    return result;
+
   } catch (error) {
     console.error("Error:", error.message);
+  } finally {
+    dispatch(hideLoader()); // ✅ stop loader ALWAYS
   }
 }
 
 const getData = async (url) => {
-  const settings = {
-    headers: {
-      Authorization: `Token ${investorToken}`,
-    },
-  };
-  const response = await fetch(BASE_URL + url, settings);
-  if (response) {
+  try {
+    dispatch(showLoader());
+
+    const response = await fetch(BASE_URL + url, {
+      headers: {
+        Authorization: `Token ${investorToken}`,
+      },
+    });
+
     const result = await response.json();
     return result;
+
+  } catch (error) {
+    console.error("Error:", error.message);
+  } finally {
+    dispatch(hideLoader());
   }
 };
 
-export const registerInvestor = (url, payload, isToken) => postData(url, payload, isToken);
-export const loginInvestor = (url, payload) => postData(url, payload);
-export const getPreview = (url, payload, isToken) => postData(url, payload, isToken);
-export const getInvestorProfileData = (url) => getData(url);
+export const registerInvestor = (url, payload, isToken) =>
+  postData(url, payload, isToken);
+
+export const loginInvestor = (url, payload) =>
+  postData(url, payload);
+
+export const getPreview = (url, payload, isToken) =>
+  postData(url, payload, isToken);
+
+export const investorOnboarding = (url, payload, isToken) =>
+  postData(url, payload, isToken);
+
+export const getInvestorProfileData = (url) =>
+  getData(url);
