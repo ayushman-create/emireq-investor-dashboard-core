@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 import { loginInvestor } from "../../apiRequests/investorsAPI/investorsApiCall";
 import { INVESTROR_LOGIN_ENDPOINT } from "../../services/endPoints";
 import emireqLogo from "../../assets/emireq-logo.png";
@@ -64,6 +65,34 @@ export default function LoginPage() {
     setShowSuccessModal(false);
     navigate("/dashboard");
   };
+
+  const googleLogin = useGoogleLogin({
+  onSuccess: async (tokenResponse) => {
+    console.log("Google Access Token:", tokenResponse.access_token);
+
+    // 🔥 Send this token to backend
+    // const payload = {
+    //   token: tokenResponse.access_token,
+    // };
+
+    // try {
+    //   const response = await loginStartup("/google-login", payload); // create this API
+
+    //   if (!response.ok) {
+    //     setIsloginError(true);
+    //     setIsLoading(false);
+    //   } else {
+    //     sessionStorage.setItem("startup_token", response.token);
+    //     setShowSuccessModal(true);
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    // }
+  },
+  onError: () => {
+    console.log("Google Login Failed");
+  },
+});
 
   return (
     <div className="login-page">
@@ -221,7 +250,7 @@ export default function LoginPage() {
           </div>
 
           <div className="login-social-buttons">
-            <button type="button" className="login-social-btn">
+            <button type="button" className="login-social-btn" onClick={() => googleLogin()}>
               <svg
                 width="24"
                 height="24"
