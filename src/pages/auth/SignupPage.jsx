@@ -10,6 +10,7 @@ import ShortLogo from "../../assets/shotLogo.png";
 import LogoImg from "../../assets/emireq-logo.png";
 import { registerInvestor } from "../../apiRequests/investorsAPI/investorsApiCall";
 import { INVESTROR_REGISTER_ENDPOINT } from "../../services/endPoints";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const InvestorRegister = () => {
   const navigate = useNavigate();
@@ -94,10 +95,40 @@ const InvestorRegister = () => {
     }
   };
 
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      console.log("Google Access Token:", tokenResponse.access_token);
+
+      // 🔥 Send this token to backend
+      // const payload = {
+      //   token: tokenResponse.access_token,
+      // };
+
+      // try {
+      //   const response = await loginStartup("/google-login", payload); // create this API
+
+      //   if (!response.ok) {
+      //     setIsloginError(true);
+      //     setIsLoading(false);
+      //   } else {
+      //     sessionStorage.setItem("startup_token", response.token);
+      //     setShowSuccessModal(true);
+      //   }
+      // } catch (err) {
+      //   console.error(err);
+      // }
+    },
+    onError: () => {
+      console.log("Google Login Failed");
+    },
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src={LogoImg} alt="logo" />
+        <a href="https://emireq.com/">
+          <img src={LogoImg} alt="logo" />
+        </a>
       </div>
 
       <div className={styles.wrapper}>
@@ -245,7 +276,10 @@ const InvestorRegister = () => {
               Verify your business email with Google or Linkedin
             </p>
             <div className={styles.socialBtnContainer}>
-              <button className={styles.socialBtn}>
+              <button
+                className={styles.socialBtn}
+                onClick={() => googleLogin()}
+              >
                 <span>
                   <FcGoogle />
                 </span>

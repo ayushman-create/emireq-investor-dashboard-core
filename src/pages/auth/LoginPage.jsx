@@ -67,39 +67,41 @@ export default function LoginPage() {
   };
 
   const googleLogin = useGoogleLogin({
-  onSuccess: async (tokenResponse) => {
-    console.log("Google Access Token:", tokenResponse.access_token);
+    onSuccess: async (tokenResponse) => {
+      console.log("Google Access Token:", tokenResponse.access_token);
 
-    // 🔥 Send this token to backend
-    // const payload = {
-    //   token: tokenResponse.access_token,
-    // };
+      // 🔥 Send this token to backend
+      // const payload = {
+      //   token: tokenResponse.access_token,
+      // };
 
-    // try {
-    //   const response = await loginStartup("/google-login", payload); // create this API
+      // try {
+      //   const response = await loginStartup("/google-login", payload); // create this API
 
-    //   if (!response.ok) {
-    //     setIsloginError(true);
-    //     setIsLoading(false);
-    //   } else {
-    //     sessionStorage.setItem("startup_token", response.token);
-    //     setShowSuccessModal(true);
-    //   }
-    // } catch (err) {
-    //   console.error(err);
-    // }
-  },
-  onError: () => {
-    console.log("Google Login Failed");
-  },
-});
+      //   if (!response.ok) {
+      //     setIsloginError(true);
+      //     setIsLoading(false);
+      //   } else {
+      //     sessionStorage.setItem("startup_token", response.token);
+      //     setShowSuccessModal(true);
+      //   }
+      // } catch (err) {
+      //   console.error(err);
+      // }
+    },
+    onError: () => {
+      console.log("Google Login Failed");
+    },
+  });
 
   return (
     <div className="login-page">
       {/* Left Side - Form Section */}
       <div className="login-left">
         <div className="login-header">
-          <img src={emireqLogo} alt="Emireq" className="login-logo" />
+          <a href="https://emireq.com/">
+            <img src={emireqLogo} alt="Emireq" className="login-logo" />
+          </a>
         </div>
 
         <div className="login-form-container">
@@ -250,7 +252,11 @@ export default function LoginPage() {
           </div>
 
           <div className="login-social-buttons">
-            <button type="button" className="login-social-btn" onClick={() => googleLogin()}>
+            <button
+              type="button"
+              className="login-social-btn"
+              onClick={() => googleLogin()}
+            >
               <svg
                 width="24"
                 height="24"
